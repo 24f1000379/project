@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Admin Dashboard</h2>
+
+<div class="row g-4">
+
+    <div class="col-md-4">
+        <div class="card shadow-sm text-center">
+            <div class="card-body">
+                <h3>{{ doctors|length }}</h3>
+                <p class="text-muted">Total Doctors</p>
+                <a class="btn btn-primary" href="{{ url_for('admin.add_doctor') }}">Add Doctor</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm text-center">
+            <div class="card-body">
+                <h3>{{ patients|length }}</h3>
+                <p class="text-muted">Total Patients</p>
+                <a class="btn btn-success" href="{{ url_for('admin.add_patient') }}">Add Patient</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<hr class="my-4">
+
+<h4>Doctors List</h4>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Specialization</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for d in doctors %}
+        <tr>
+            <td>{{ d.user.name }}</td>
+            <td>{{ d.user.email }}</td>
+            <td>{{ d.specialization }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="3">No doctors found</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<hr>
+
+<h4>Patients List</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th><th>Email</th><th>Age</th><th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in patients %}
+        <tr>
+            <td>{{ p.user.name }}</td>
+            <td>{{ p.user.email }}</td>
+            <td>{{ p.age or "-" }}</td>
+            <td>{{ p.address or "-" }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="4">No patients found</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

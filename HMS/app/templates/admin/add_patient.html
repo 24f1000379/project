@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Add Patient{% endblock %}
+
+{% block content %}
+<h2>Add Patient</h2>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    <div>
+        {{ form.username.label }}<br>
+        {{ form.username(class="form-control") }}
+    </div>
+
+    <div>
+        {{ form.email.label }}<br>
+        {{ form.email(class="form-control") }}
+    </div>
+
+    <div>
+        {{ form.age.label }}<br>
+        {{ form.age(class="form-control") }}
+    </div>
+
+    <div>
+        {{ form.address.label }}<br>
+        {{ form.address(class="form-control") }}
+    </div>
+
+    <div>
+        {{ form.password.label }}<br>
+        {{ form.password(class="form-control") }}
+    </div>
+
+    <div style="margin-top:10px;">
+        {{ form.submit(class="btn btn-success") }}
+    </div>
+</form>
+
+<a href="{{ url_for('admin.index') }}">Back to Admin Dashboard</a>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Patient Dashboard{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Patient Dashboard</h2>
+
+<div class="row g-4">
+
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-body text-center">
+                <h3>Book Appointment</h3>
+                <p class="text-muted">Choose a doctor & book a slot</p>
+                <a href="{{ url_for('patient.book') }}" class="btn btn-primary">Book Now</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<hr class="my-4">
+
+<h4>Your Upcoming Appointments</h4>
+
+{% if upcoming %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Doctor</th><th>Date</th><th>Time</th><th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for a in upcoming %}
+        <tr>
+            <td>Dr. {{ a.doctor.user.name }}</td>
+            <td>{{ a.date }}</td>
+            <td>{{ a.time }}</td>
+            <td>{{ a.status }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No upcoming appointments.</p>
+{% endif %}
+
+{% endblock %}

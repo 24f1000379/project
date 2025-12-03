@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Book Appointment{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Book Appointment</h2>
+
+<form method="POST" class="card p-4 shadow-sm">
+    {{ form.hidden_tag() }}
+
+    <div class="mb-3">
+        <label class="form-label">Doctor ID</label>
+        {{ form.doctor_id(class="form-control") }}
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Date</label>
+        {{ form.date(class="form-control") }}
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Time</label>
+        {{ form.time(class="form-control") }}
+    </div>
+
+    <button class="btn btn-primary mt-3">{{ form.submit() }}</button>
+</form>
+
+<a class="btn btn-secondary mt-3" href="{{ url_for('patient.index') }}">Back</a>
+{% endblock %}

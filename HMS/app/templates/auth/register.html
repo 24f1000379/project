@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+
+    <div class="card shadow-lg border-0 mt-4">
+      <div class="card-body p-4">
+
+        <h3 class="text-center mb-4 fw-bold">Create Patient Account</h3>
+
+        <form method="POST">
+          {{ form.hidden_tag() }}
+
+          <!-- Username -->
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Full Name</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+              {{ form.username(class="form-control", placeholder="Your full name") }}
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Email</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+              {{ form.email(class="form-control", placeholder="Your email address") }}
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Password</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+              {{ form.password(class="form-control", placeholder="Choose password") }}
+            </div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Confirm Password</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-shield-lock-fill"></i></span>
+              {{ form.confirm_password(class="form-control", placeholder="Re-enter password") }}
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <div class="d-grid">
+            <button class="btn btn-success btn-lg">{{ form.submit.label.text }}</button>
+          </div>
+        </form>
+
+        <p class="text-center mt-3 mb-0">
+          Already have an account?
+          <a href="{{ url_for('auth.login') }}" class="text-primary fw-semibold">Login</a>
+        </p>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+body {font-family: Arial, sans-serif; margin: 20px; }
+nav { margin-bottom: 10px; }
+.container { max-width: 900px; margin: 0 auto; }
+.flash { padding: 8px; margin-bottom: 8px; border-radius: 4px; }
+.flash.success { background: #e9f7ef; color: #165a2b; }
+.flash.danger { background: #fdecea; color: #8a1f11; }
+body {
+    background: #f0f4f8;
+}
+
+.card {
+    border-radius: 12px;
+}
+
+.input-group-text {
+    background: #f1f1f1;
+    border-right: 0;
+}
+
+.form-control {
+    border-left: 0;
+}
